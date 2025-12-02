@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prescription</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-success text-white">
+            <h4>Verified Prescription</h4>
+        </div>
+        <div class="card-body">
+            <p><strong>Patient:</strong> {{ appt.patient.name }}</p>
+            <p><strong>Doctor:</strong> Dr. {{ appt.doctor.name }}</p>
+            <p><strong>Date:</strong> {{ appt.date.strftime('%d %B %Y, %I:%M %p') }}</p>
+            <hr>
+            <h5>Medications:</h5>
+            <pre class="bg-light p-3 rounded">{{ prescription.medications }}</pre>
+            {% if prescription.instructions %}
+            <h5>Instructions:</h5>
+            <p class="alert alert-info">{{ prescription.instructions }}</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

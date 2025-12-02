@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Patient Dashboard</h3>
+<a href="{{ url_for('patient_book_appointment') }}" class="btn btn-primary mb-3">Book Appointment</a>
+<h4>Your Appointments</h4>
+<table class="table">
+    <tr><th>Doctor</th><th>Date</th><th>Status</th><th>Report</th></tr>
+    {% for a in appointments %}
+    <tr>
+        <td>Dr. {{ a.doctor.name }}</td>
+        <td>{{ a.date.strftime('%Y-%m-%d %H:%M') }}</td>
+        <td>{{ a.status }}</td>
+        <td>{% if a.report %}{{ a.report }}{% else %}<em>Pending</em>{% endif %}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

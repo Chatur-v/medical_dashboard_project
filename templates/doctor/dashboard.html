@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Doctor Dashboard</h3>
+<table class="table">
+    <tr><th>Patient</th><th>Date</th><th>Status</th><th>Action</th></tr>
+    {% for a in appointments %}
+    <tr>
+        <td>{{ a.patient.name }}</td>
+        <td>{{ a.date.strftime('%Y-%m-%d %H:%M') }}</td>
+        <td>{{ a.status }}</td>
+        <td>
+            {% if a.status == 'Scheduled' %}
+            <form method="POST" action="{{ url_for('add_report', appt_id=a.id) }}" class="d-inline">
+                <textarea name="report" placeholder="Add report" class="form-control d-inline" style="width:200px;" required></textarea>
+                <button class="btn btn-sm btn-success">Save</button>
+            </form>
+            {% elif a.status == 'Completed' and not a.prescription %}
+            <a href="{{ url_for('prescribe', appt_id=a.id) }}" class="btn btn-sm btn-primary">Prescribe</a>
+            {% else %}
+            <span class="badge bg-success">Prescribed</span>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

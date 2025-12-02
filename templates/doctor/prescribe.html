@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Prescribe for {{ appt.patient.name }}</h3>
+<form method="POST">
+    <div class="mb-3">
+        <label>Medications (one per line)</label>
+        <textarea name="medications" class="form-control" rows="5" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label>Instructions</label>
+        <textarea name="instructions" class="form-control" rows="3"></textarea>
+    </div>
+    <button class="btn btn-success">Generate QR Prescription</button>
+</form>
+{% endblock %}

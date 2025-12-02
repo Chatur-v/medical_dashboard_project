@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Admin Dashboard</h2>
+<div class="row">
+    <div class="col-md-4">
+        <a href="{{ url_for('add_doctor') }}" class="btn btn-success w-100 mb-2">Add Doctor</a>
+        <a href="{{ url_for('add_patient') }}" class="btn btn-info w-100 mb-2">Add Patient</a>
+        <a href="{{ url_for('admin_book_appointment') }}" class="btn btn-warning w-100">Book Appointment</a>
+    </div>
+    <div class="col-md-8">
+        <h4>Doctors</h4>
+        <table class="table table-sm">
+            <tr><th>ID</th><th>Name</th><th>Specialty</th></tr>
+            {% for d in doctors %}
+            <tr><td>{{ d.id }}</td><td>{{ d.name }}</td><td>{{ d.specialty }}</td></tr>
+            {% endfor %}
+        </table>
+        <h4>Appointments</h4>
+        <table class="table table-sm">
+            <tr><th>Patient</th><th>Doctor</th><th>Date</th><th>Status</th></tr>
+            {% for a in appointments %}
+            <tr><td>{{ a.patient.name }}</td><td>{{ a.doctor.name }}</td><td>{{ a.date.strftime('%Y-%m-%d %H:%M') }}</td><td>{{ a.status }}</td></tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

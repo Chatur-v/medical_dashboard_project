@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Add Patient</h3>
+<form method="POST">
+    <div class="mb-3"><input name="name" placeholder="Full Name" class="form-control" required></div>
+    <div class="mb-3"><input name="email" type="email" placeholder="Email" class="form-control" required></div>
+    <button class="btn btn-success">Add Patient</button>
+    <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">Back</a>
+</form>
+{% endblock %}
