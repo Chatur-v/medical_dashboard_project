@@ -1,0 +1,12 @@
+# Environment variables
+.env
+
+# Do not track config files containing secrets
+config.py
+
+# Cache & compiled files
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
